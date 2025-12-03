@@ -17,5 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# [변경점] 루트 경로 접속 시 메시지 반환 (배포 확인용)
+@app.get("/")
+def read_root():
+    return {"message": "Hello! Server is deployed successfully."}
+
 app.include_router(question_router.router)
+
 app.include_router(answer_router.router)
